@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -34,7 +33,6 @@
     overflow-x: hidden;
   }
 
-  /* ── HEADER ── */
   header {
     position: sticky; top: 0; z-index: 100;
     background: var(--navy3);
@@ -43,15 +41,7 @@
     padding: 0 40px;
     height: 64px;
   }
-  .logo-text {
-    font-family: 'Barlow Condensed', sans-serif;
-    font-size: 22px;
-    font-weight: 700;
-    letter-spacing: 1px;
-    color: var(--white);
-    text-decoration: none;
-  }
-  .logo-text span { color: var(--gold); }
+  .logo-img { height: 38px; width: auto; }
   nav { display: flex; gap: 28px; }
   nav a {
     font-size: 13px; font-weight: 500; letter-spacing: .04em;
@@ -60,7 +50,6 @@
   }
   nav a:hover { color: var(--white); }
 
-  /* ── HERO ── */
   .hero {
     min-height: 88vh;
     display: flex; flex-direction: column; justify-content: center;
@@ -115,7 +104,6 @@
   .btn-ghost:hover { color: var(--white); }
   .btn-ghost::after { content: '→'; }
 
-  /* ── SECTION STYLES ── */
   section { padding: 90px 40px; }
   .section-label {
     font-size: 11px; font-weight: 600; letter-spacing: .14em;
@@ -134,7 +122,6 @@
   }
   .divider { height: 1px; background: var(--border); margin: 0 40px; }
 
-  /* ── PROBLEM STRIP ── */
   .problem-strip {
     background: var(--navy2);
     border-top: 1px solid var(--border);
@@ -157,7 +144,6 @@
     font-size: 14px; color: var(--muted); line-height: 1.6;
   }
 
-  /* ── MODULES ── */
   .modules-section { background: var(--navy3); }
   .modules-header {
     display: flex; justify-content: space-between;
@@ -174,7 +160,6 @@
     background: var(--card-bg);
     border: 1px solid var(--border);
     padding: 32px 28px;
-    cursor: pointer;
     transition: background .2s;
     position: relative;
   }
@@ -190,15 +175,9 @@
     position: absolute; top: 16px; right: 20px;
     line-height: 1;
   }
-  .module-icon {
-    font-size: 28px; margin-bottom: 16px;
-  }
-  .module-name {
-    font-size: 17px; font-weight: 600; margin-bottom: 8px;
-  }
-  .module-desc {
-    font-size: 14px; color: var(--muted); line-height: 1.6; margin-bottom: 16px;
-  }
+  .module-icon { font-size: 28px; margin-bottom: 16px; }
+  .module-name { font-size: 17px; font-weight: 600; margin-bottom: 8px; }
+  .module-desc { font-size: 14px; color: var(--muted); line-height: 1.6; margin-bottom: 16px; }
   .module-tag {
     display: inline-block;
     font-size: 11px; font-weight: 600; letter-spacing: .06em; text-transform: uppercase;
@@ -206,18 +185,13 @@
   }
   .tag-core { background: rgba(200,168,75,.15); color: var(--gold); }
   .tag-plus { background: rgba(255,255,255,.07); color: var(--muted); }
-  .module-bullets {
-    list-style: none; margin-top: 14px;
-  }
+  .module-bullets { list-style: none; margin-top: 14px; }
   .module-bullets li {
     font-size: 13px; color: rgba(255,255,255,.6);
     padding: 4px 0 4px 16px; position: relative;
   }
-  .module-bullets li::before {
-    content: '–'; position: absolute; left: 0; color: var(--gold);
-  }
+  .module-bullets li::before { content: '–'; position: absolute; left: 0; color: var(--gold); }
 
-  /* ── HOW IT WORKS ── */
   .process-section { background: var(--navy2); }
   .steps {
     display: grid;
@@ -228,7 +202,6 @@
   .step {
     padding: 36px 28px;
     border-right: 1px solid var(--border);
-    position: relative;
   }
   .step:last-child { border-right: none; }
   .step-n {
@@ -240,7 +213,6 @@
   .step h4 { font-size: 16px; font-weight: 600; margin-bottom: 8px; }
   .step p { font-size: 13px; color: var(--muted); line-height: 1.6; }
 
-  /* ── STATS / INSIGHT (SIMULATED DATA NOTICE) ── */
   .insight-section { background: var(--navy3); }
   .insight-grid {
     display: grid;
@@ -277,7 +249,6 @@
     align-items: center;
   }
   .insight-row:last-child { border-bottom: none; }
-  .insight-row:hover { background: rgba(255,255,255,.03); }
   .rate-good { color: #4caf7d; font-weight: 600; }
   .rate-bad { color: #e05c5c; font-weight: 600; }
   .rate-mid { color: var(--gold); font-weight: 600; }
@@ -292,7 +263,6 @@
     border-radius: 20px;
   }
 
-  /* ── NEXT STEPS (NO PRICING) ── */
   .next-steps-section {
     background: var(--navy2);
     text-align: center;
@@ -333,9 +303,7 @@
     transform: translateY(-2px);
   }
   .whatsapp-btn:hover { background: rgba(37, 211, 102, 0.15); border-color: #25D366; }
-  .call-btn:hover { background: rgba(255,255,255,0.1); }
 
-  /* ── CTA SECTION (FINAL CONTACT) ── */
   .final-cta {
     background: var(--navy3);
     text-align: center; padding: 80px 40px;
@@ -346,9 +314,7 @@
     font-size: clamp(32px, 5vw, 52px); font-weight: 700;
     line-height: 1.1; margin-bottom: 20px;
   }
-  .final-cta .btn-primary { margin-top: 16px; }
 
-  /* ── FOOTER ── */
   footer {
     background: var(--navy3);
     border-top: 1px solid var(--border);
@@ -361,7 +327,6 @@
   }
   footer p { font-size: 13px; color: var(--muted); }
 
-  /* ── ANIMATIONS ── */
   .fade-in {
     opacity: 0; transform: translateY(24px);
     transition: opacity .6s ease, transform .6s ease;
@@ -380,9 +345,8 @@
 </head>
 <body>
 
-<!-- HEADER with text logo -->
 <header>
-  <a href="#" class="logo-text">DATAMARK<span>AI</span></a>
+  <img src="logo.png" alt="DATAMARK Logo" class="logo-img">
   <nav>
     <a href="#problem">The Problem</a>
     <a href="#modules">The Solution</a>
@@ -392,7 +356,6 @@
   </nav>
 </header>
 
-<!-- HERO -->
 <section class="hero">
   <div class="hero-label">Introducing — DATAMARK Asset Intelligence</div>
   <h1>Your tracking data.<br><span>Working for you.</span><br>Every day.</h1>
@@ -405,7 +368,6 @@
 
 <div class="divider"></div>
 
-<!-- PROBLEM -->
 <div class="problem-strip" id="problem">
   <div class="section-label">The Current Situation</div>
   <div class="section-title">Valuable data. Manual process.<br>Slow decisions.</div>
@@ -429,7 +391,6 @@
   </div>
 </div>
 
-<!-- MODULES -->
 <section class="modules-section" id="modules">
   <div class="modules-header">
     <div>
@@ -438,7 +399,6 @@
     </div>
     <p class="section-sub" style="max-width:340px; font-size:15px;">Built on the data DATAMARK already captures — no new hardware, no disruption to operations on the ground.</p>
   </div>
-
   <div class="modules-grid">
     <div class="module-card highlight fade-in">
       <div class="module-num">01</div>
@@ -452,7 +412,6 @@
         <li>Supplier warranty claim support</li>
       </ul>
     </div>
-
     <div class="module-card highlight fade-in">
       <div class="module-num">02</div>
       <div class="module-icon">📍</div>
@@ -465,7 +424,6 @@
         <li>Vehicle-level component summary</li>
       </ul>
     </div>
-
     <div class="module-card highlight fade-in">
       <div class="module-num">03</div>
       <div class="module-icon">🔔</div>
@@ -478,7 +436,6 @@
         <li>Pending & idle asset detection</li>
       </ul>
     </div>
-
     <div class="module-card fade-in">
       <div class="module-num">04</div>
       <div class="module-icon">🧠</div>
@@ -491,7 +448,6 @@
         <li>Procurement recommendation report</li>
       </ul>
     </div>
-
     <div class="module-card fade-in">
       <div class="module-num">05</div>
       <div class="module-icon">📄</div>
@@ -504,7 +460,6 @@
         <li>Customisable DATAMARK branding</li>
       </ul>
     </div>
-
     <div class="module-card fade-in">
       <div class="module-num">06</div>
       <div class="module-icon">🚛</div>
@@ -522,12 +477,10 @@
 
 <div class="divider"></div>
 
-<!-- LIVE INSIGHT (simulated data) -->
 <section class="insight-section" id="insight">
   <div class="section-label">Real Data. Real Findings.</div>
   <div class="section-title">What the system found<br>in one client's battery data.</div>
   <p class="section-sub" style="margin-top:12px;">This is a sample of what the Brand Performance Engine surfaces automatically — from the same data currently sitting in a spreadsheet.</p>
-
   <div class="insight-grid">
     <div>
       <div class="stat-block fade-in">
@@ -546,48 +499,19 @@
         <div class="stat-note">Asset #168942 — flagged instantly by the Alert Centre</div>
       </div>
     </div>
-
     <div class="insight-table fade-in">
       <div class="insight-table-header">
         <span>Brand</span>
         <span>Units Tracked</span>
         <span>Scrap Rate</span>
       </div>
-      <div class="insight-row">
-        <span>Tuska Power</span>
-        <span>213</span>
-        <span class="rate-good">2.8%</span>
-      </div>
-      <div class="insight-row">
-        <span>Probe</span>
-        <span>822</span>
-        <span class="rate-bad">87.3%</span>
-      </div>
-      <div class="insight-row">
-        <span>Exide</span>
-        <span>408</span>
-        <span class="rate-bad">94.4%</span>
-      </div>
-      <div class="insight-row">
-        <span>Willard</span>
-        <span>409</span>
-        <span class="rate-bad">96.1%</span>
-      </div>
-      <div class="insight-row">
-        <span>Energizer</span>
-        <span>361</span>
-        <span class="rate-mid">80.9%</span>
-      </div>
-      <div class="insight-row">
-        <span>Deltec</span>
-        <span>164</span>
-        <span class="rate-mid">75.6%</span>
-      </div>
-      <div class="insight-row">
-        <span>Raylite</span>
-        <span>42</span>
-        <span class="rate-good">9.5%</span>
-      </div>
+      <div class="insight-row"><span>Tuska Power</span><span>213</span><span class="rate-good">2.8%</span></div>
+      <div class="insight-row"><span>Probe</span><span>822</span><span class="rate-bad">87.3%</span></div>
+      <div class="insight-row"><span>Exide</span><span>408</span><span class="rate-bad">94.4%</span></div>
+      <div class="insight-row"><span>Willard</span><span>409</span><span class="rate-bad">96.1%</span></div>
+      <div class="insight-row"><span>Energizer</span><span>361</span><span class="rate-mid">80.9%</span></div>
+      <div class="insight-row"><span>Deltec</span><span>164</span><span class="rate-mid">75.6%</span></div>
+      <div class="insight-row"><span>Raylite</span><span>42</span><span class="rate-good">9.5%</span></div>
       <div class="insight-row" style="background:rgba(200,168,75,.06); border-top:1px solid rgba(200,168,75,.2);">
         <span style="color:var(--gold); font-weight:600">Insight</span>
         <span style="font-size:12px; color:var(--muted); grid-column: 2/4">Tuska Power lasts significantly longer than industry average. Procurement switch → immediate cost saving potential.</span>
@@ -601,41 +525,21 @@
 
 <div class="divider"></div>
 
-<!-- HOW IT WORKS -->
 <section class="process-section" id="process">
   <div class="section-label">How It Works</div>
   <div class="section-title">Nothing changes on the ground.<br>Everything changes in the office.</div>
   <div class="steps">
-    <div class="step fade-in">
-      <div class="step-n">Step 01</div>
-      <h4>DATAMARK continues as normal</h4>
-      <p>Field teams mark and scan parts daily. The QR-coded inspection data flows into DATATRACK exactly as it does today.</p>
-    </div>
-    <div class="step fade-in">
-      <div class="step-n">Step 02</div>
-      <h4>Data feeds the intelligence layer</h4>
-      <p>The Asset Intelligence System reads DATATRACK data and processes it into live dashboards, alerts, and reports automatically.</p>
-    </div>
-    <div class="step fade-in">
-      <div class="step-n">Step 03</div>
-      <h4>Your team sees everything</h4>
-      <p>Internal dashboards show brand performance, pending assets, scrap trends — updated daily. No more Excel digging.</p>
-    </div>
-    <div class="step fade-in">
-      <div class="step-n">Step 04</div>
-      <h4>You deliver better reports</h4>
-      <p>Monthly client reports are generated automatically. Account managers send them in one click instead of building from scratch.</p>
-    </div>
+    <div class="step fade-in"><div class="step-n">Step 01</div><h4>DATAMARK continues as normal</h4><p>Field teams mark and scan parts daily. The QR-coded inspection data flows into DATATRACK exactly as it does today.</p></div>
+    <div class="step fade-in"><div class="step-n">Step 02</div><h4>Data feeds the intelligence layer</h4><p>The Asset Intelligence System reads DATATRACK data and processes it into live dashboards, alerts, and reports automatically.</p></div>
+    <div class="step fade-in"><div class="step-n">Step 03</div><h4>Your team sees everything</h4><p>Internal dashboards show brand performance, pending assets, scrap trends — updated daily. No more Excel digging.</p></div>
+    <div class="step fade-in"><div class="step-n">Step 04</div><h4>You deliver better reports</h4><p>Monthly client reports are generated automatically. Account managers send them in one click instead of building from scratch.</p></div>
   </div>
 </section>
 
-<!-- NEXT STEPS (No pricing, just engagement) -->
 <section class="next-steps-section" id="next">
   <div class="section-label">Next Steps</div>
   <div class="section-title">Let's build Module 1.<br>Then we talk numbers.</div>
-  <p class="section-sub" style="margin-top:12px; max-width: 500px; margin-left: auto; margin-right: auto;">
-    I'm not quoting a price yet — because first I want to know if this solves a real problem for you.
-  </p>
+  <p class="section-sub" style="margin-top:12px; max-width: 500px; margin-left: auto; margin-right: auto;">I'm not quoting a price yet — because first I want to know if this solves a real problem for you.</p>
   <div class="next-card">
     <div style="font-size: 48px; margin-bottom: 16px;">📞</div>
     <h3 style="font-size: 20px; margin-bottom: 12px;">What happens next?</h3>
@@ -648,13 +552,12 @@
     </ul>
     <div class="contact-buttons">
       <a href="https://wa.me/263711664295" target="_blank" class="contact-btn whatsapp-btn">📱 WhatsApp +263 71 166 4295</a>
-      <a href="tel:+263711664295" class="contact-btn call-btn">📞 Call +263 71 166 4295</a>
+      <a href="tel:+263711664295" class="contact-btn">📞 Call +263 71 166 4295</a>
       <a href="mailto:manjengwap10@gmail.com" class="contact-btn">✉️ manjengwap10@gmail.com</a>
     </div>
   </div>
 </section>
 
-<!-- FINAL CTA SECTION -->
 <div class="final-cta" id="contact">
   <div class="section-label">Ready to start?</div>
   <h2>See what your data<br><span style="color:var(--gold)">can really do.</span></h2>
@@ -662,26 +565,21 @@
   <a href="https://wa.me/263711664295" target="_blank" class="btn-primary" style="margin-top: 32px; display: inline-block;">📱 Message me on WhatsApp →</a>
 </div>
 
-<!-- FOOTER -->
 <footer>
-  <a href="#" class="logo-text" style="font-size: 18px;">DATAMARK<span style="color:var(--gold)">AI</span></a>
-  <p>© 2026 DATAMARK Africa. Asset Intelligence System — Proposal by Anesu Manjengwa (MA TechHub).</p>
+  <img src="logo.png" alt="DATAMARK Logo" style="height: 28px; width: auto; opacity: 0.7;">
+  <p>© 2025 DATAMARK Africa. Asset Intelligence System — Proposal by Anesu Manjengwa (MA TechHub).</p>
   <p style="font-size:12px;">📊 All data insights shown are simulated for proposal purposes.</p>
 </footer>
 
 <script>
-  // Intersection Observer for fade-in animations
   const observer = new IntersectionObserver((entries) => {
     entries.forEach((entry, i) => {
       if (entry.isIntersecting) {
-        setTimeout(() => {
-          entry.target.classList.add('visible');
-        }, i * 80);
+        setTimeout(() => { entry.target.classList.add('visible'); }, i * 80);
         observer.unobserve(entry.target);
       }
     });
   }, { threshold: 0.1 });
-
   document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
 </script>
 
