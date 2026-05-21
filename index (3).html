@@ -1,0 +1,689 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>DATAMARK Asset Intelligence System | Proposal</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Barlow:wght@300;400;500;600;700&family=Barlow+Condensed:wght@600;700&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --navy:   #1A2340;
+    --navy2:  #212c4f;
+    --navy3:  #0f1628;
+    --gold:   #C8A84B;
+    --gold2:  #e5c46a;
+    --white:  #ffffff;
+    --offwhite: #f5f6f8;
+    --muted:  #8b95a9;
+    --border: rgba(255,255,255,0.08);
+    --card-bg: rgba(255,255,255,0.04);
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Barlow', sans-serif;
+    background: var(--navy3);
+    color: var(--white);
+    font-size: 16px;
+    line-height: 1.6;
+    overflow-x: hidden;
+  }
+
+  /* ── HEADER ── */
+  header {
+    position: sticky; top: 0; z-index: 100;
+    background: var(--navy3);
+    border-bottom: 1px solid var(--border);
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 0 40px;
+    height: 64px;
+  }
+  .logo-text {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 22px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    color: var(--white);
+    text-decoration: none;
+  }
+  .logo-text span { color: var(--gold); }
+  nav { display: flex; gap: 28px; }
+  nav a {
+    font-size: 13px; font-weight: 500; letter-spacing: .04em;
+    color: var(--muted); text-decoration: none; text-transform: uppercase;
+    transition: color .2s;
+  }
+  nav a:hover { color: var(--white); }
+
+  /* ── HERO ── */
+  .hero {
+    min-height: 88vh;
+    display: flex; flex-direction: column; justify-content: center;
+    padding: 100px 40px 80px;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute; inset: 0;
+    background: radial-gradient(ellipse 70% 60% at 80% 40%, rgba(200,168,75,0.07) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  .hero-label {
+    font-size: 11px; font-weight: 600; letter-spacing: .14em;
+    text-transform: uppercase; color: var(--gold);
+    margin-bottom: 20px;
+  }
+  .hero h1 {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: clamp(42px, 6vw, 78px);
+    font-weight: 700; line-height: 1.05;
+    max-width: 780px;
+    margin-bottom: 24px;
+  }
+  .hero h1 span { color: var(--gold); }
+  .hero p {
+    font-size: 18px; font-weight: 300;
+    color: rgba(255,255,255,0.72);
+    max-width: 560px; line-height: 1.7;
+    margin-bottom: 40px;
+  }
+  .hero-cta {
+    display: flex; gap: 16px; flex-wrap: wrap; align-items: center;
+  }
+  .btn-primary {
+    background: var(--gold); color: var(--navy3);
+    font-size: 14px; font-weight: 700; letter-spacing: .04em;
+    padding: 14px 32px; border: none; border-radius: 4px;
+    text-decoration: none; text-transform: uppercase; cursor: pointer;
+    transition: background .2s, transform .15s;
+    display: inline-block;
+  }
+  .btn-primary:hover { background: var(--gold2); transform: translateY(-1px); }
+  .btn-ghost {
+    font-size: 14px; font-weight: 500; color: rgba(255,255,255,.7);
+    letter-spacing: .04em; text-decoration: none; text-transform: uppercase;
+    padding: 14px 0;
+    display: flex; align-items: center; gap: 8px;
+    transition: color .2s;
+  }
+  .btn-ghost:hover { color: var(--white); }
+  .btn-ghost::after { content: '→'; }
+
+  /* ── SECTION STYLES ── */
+  section { padding: 90px 40px; }
+  .section-label {
+    font-size: 11px; font-weight: 600; letter-spacing: .14em;
+    text-transform: uppercase; color: var(--gold);
+    margin-bottom: 12px;
+  }
+  .section-title {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: clamp(32px, 4vw, 48px); font-weight: 700;
+    line-height: 1.1; margin-bottom: 16px;
+  }
+  .section-sub {
+    font-size: 17px; font-weight: 300;
+    color: rgba(255,255,255,.65);
+    max-width: 560px; line-height: 1.7;
+  }
+  .divider { height: 1px; background: var(--border); margin: 0 40px; }
+
+  /* ── PROBLEM STRIP ── */
+  .problem-strip {
+    background: var(--navy2);
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+    padding: 60px 40px;
+  }
+  .problem-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 32px; margin-top: 48px;
+  }
+  .problem-card {
+    border-left: 3px solid var(--gold);
+    padding-left: 20px;
+  }
+  .problem-card h4 {
+    font-size: 15px; font-weight: 600; margin-bottom: 6px;
+  }
+  .problem-card p {
+    font-size: 14px; color: var(--muted); line-height: 1.6;
+  }
+
+  /* ── MODULES ── */
+  .modules-section { background: var(--navy3); }
+  .modules-header {
+    display: flex; justify-content: space-between;
+    align-items: flex-end; margin-bottom: 52px; flex-wrap: wrap; gap: 20px;
+  }
+  .modules-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2px;
+    border: 1px solid var(--border);
+    border-radius: 8px; overflow: hidden;
+  }
+  .module-card {
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    padding: 32px 28px;
+    cursor: pointer;
+    transition: background .2s;
+    position: relative;
+  }
+  .module-card:hover { background: rgba(255,255,255,0.07); }
+  .module-card.highlight {
+    background: rgba(200,168,75,0.07);
+    border-color: rgba(200,168,75,0.3);
+  }
+  .module-num {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 48px; font-weight: 700;
+    color: rgba(255,255,255,0.06);
+    position: absolute; top: 16px; right: 20px;
+    line-height: 1;
+  }
+  .module-icon {
+    font-size: 28px; margin-bottom: 16px;
+  }
+  .module-name {
+    font-size: 17px; font-weight: 600; margin-bottom: 8px;
+  }
+  .module-desc {
+    font-size: 14px; color: var(--muted); line-height: 1.6; margin-bottom: 16px;
+  }
+  .module-tag {
+    display: inline-block;
+    font-size: 11px; font-weight: 600; letter-spacing: .06em; text-transform: uppercase;
+    padding: 4px 10px; border-radius: 3px;
+  }
+  .tag-core { background: rgba(200,168,75,.15); color: var(--gold); }
+  .tag-plus { background: rgba(255,255,255,.07); color: var(--muted); }
+  .module-bullets {
+    list-style: none; margin-top: 14px;
+  }
+  .module-bullets li {
+    font-size: 13px; color: rgba(255,255,255,.6);
+    padding: 4px 0 4px 16px; position: relative;
+  }
+  .module-bullets li::before {
+    content: '–'; position: absolute; left: 0; color: var(--gold);
+  }
+
+  /* ── HOW IT WORKS ── */
+  .process-section { background: var(--navy2); }
+  .steps {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 0; margin-top: 52px;
+    border: 1px solid var(--border); border-radius: 8px; overflow: hidden;
+  }
+  .step {
+    padding: 36px 28px;
+    border-right: 1px solid var(--border);
+    position: relative;
+  }
+  .step:last-child { border-right: none; }
+  .step-n {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 13px; font-weight: 700; letter-spacing: .1em;
+    color: var(--gold); text-transform: uppercase;
+    margin-bottom: 14px;
+  }
+  .step h4 { font-size: 16px; font-weight: 600; margin-bottom: 8px; }
+  .step p { font-size: 13px; color: var(--muted); line-height: 1.6; }
+
+  /* ── STATS / INSIGHT (SIMULATED DATA NOTICE) ── */
+  .insight-section { background: var(--navy3); }
+  .insight-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 48px; margin-top: 52px;
+    align-items: start;
+  }
+  @media (max-width: 768px) { .insight-grid { grid-template-columns: 1fr; } }
+  .stat-block { margin-bottom: 32px; }
+  .stat-num {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 56px; font-weight: 700; color: var(--gold); line-height: 1;
+  }
+  .stat-label { font-size: 14px; color: var(--muted); margin-top: 4px; }
+  .stat-note { font-size: 13px; color: rgba(255,255,255,.5); margin-top: 2px; }
+  .insight-table {
+    background: var(--card-bg);
+    border: 1px solid var(--border); border-radius: 8px;
+    overflow: hidden;
+  }
+  .insight-table-header {
+    background: rgba(255,255,255,.04);
+    padding: 14px 20px;
+    display: grid; grid-template-columns: 1fr 1fr 1fr;
+    font-size: 11px; font-weight: 600; letter-spacing: .08em;
+    text-transform: uppercase; color: var(--muted);
+    border-bottom: 1px solid var(--border);
+  }
+  .insight-row {
+    padding: 14px 20px;
+    display: grid; grid-template-columns: 1fr 1fr 1fr;
+    font-size: 14px;
+    border-bottom: 1px solid var(--border);
+    align-items: center;
+  }
+  .insight-row:last-child { border-bottom: none; }
+  .insight-row:hover { background: rgba(255,255,255,.03); }
+  .rate-good { color: #4caf7d; font-weight: 600; }
+  .rate-bad { color: #e05c5c; font-weight: 600; }
+  .rate-mid { color: var(--gold); font-weight: 600; }
+  .data-simulated-note {
+    text-align: center;
+    margin-top: 20px;
+    font-size: 12px;
+    color: var(--muted);
+    background: rgba(0,0,0,0.2);
+    display: inline-block;
+    padding: 6px 14px;
+    border-radius: 20px;
+  }
+
+  /* ── NEXT STEPS (NO PRICING) ── */
+  .next-steps-section {
+    background: var(--navy2);
+    text-align: center;
+    padding: 90px 40px;
+  }
+  .next-card {
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 48px 40px;
+    max-width: 700px;
+    margin: 48px auto 0;
+  }
+  .contact-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 24px;
+    flex-wrap: wrap;
+    margin-top: 32px;
+  }
+  .contact-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background: rgba(255,255,255,0.05);
+    border: 1px solid var(--border);
+    padding: 12px 24px;
+    border-radius: 40px;
+    text-decoration: none;
+    color: var(--white);
+    font-size: 15px;
+    font-weight: 500;
+    transition: all 0.2s;
+  }
+  .contact-btn:hover {
+    background: rgba(200,168,75,0.15);
+    border-color: var(--gold);
+    transform: translateY(-2px);
+  }
+  .whatsapp-btn:hover { background: rgba(37, 211, 102, 0.15); border-color: #25D366; }
+  .call-btn:hover { background: rgba(255,255,255,0.1); }
+
+  /* ── CTA SECTION (FINAL CONTACT) ── */
+  .final-cta {
+    background: var(--navy3);
+    text-align: center; padding: 80px 40px;
+    border-top: 1px solid var(--border);
+  }
+  .final-cta h2 {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: clamp(32px, 5vw, 52px); font-weight: 700;
+    line-height: 1.1; margin-bottom: 20px;
+  }
+  .final-cta .btn-primary { margin-top: 16px; }
+
+  /* ── FOOTER ── */
+  footer {
+    background: var(--navy3);
+    border-top: 1px solid var(--border);
+    padding: 28px 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+  footer p { font-size: 13px; color: var(--muted); }
+
+  /* ── ANIMATIONS ── */
+  .fade-in {
+    opacity: 0; transform: translateY(24px);
+    transition: opacity .6s ease, transform .6s ease;
+  }
+  .fade-in.visible { opacity: 1; transform: none; }
+
+  @media (max-width: 640px) {
+    header { padding: 0 20px; }
+    nav { display: none; }
+    section, .problem-strip, .process-section, .insight-section, .next-steps-section, .final-cta { padding: 60px 20px; }
+    .hero { padding: 80px 20px 60px; }
+    .divider { margin: 0 20px; }
+    .next-card { padding: 32px 24px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- HEADER with text logo -->
+<header>
+  <a href="#" class="logo-text">DATAMARK<span>AI</span></a>
+  <nav>
+    <a href="#problem">The Problem</a>
+    <a href="#modules">The Solution</a>
+    <a href="#insight">Live Insight</a>
+    <a href="#next">Next Steps</a>
+    <a href="#contact">Contact</a>
+  </nav>
+</header>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-label">Introducing — DATAMARK Asset Intelligence</div>
+  <h1>Your tracking data.<br><span>Working for you.</span><br>Every day.</h1>
+  <p>DATAMARK has spent over 20 years collecting priceless asset data. This system turns that data into live decisions — without touching a single pivot table.</p>
+  <div class="hero-cta">
+    <a href="#modules" class="btn-primary">See the Modules</a>
+    <a href="#next" class="btn-ghost">Book a Walkthrough</a>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- PROBLEM -->
+<div class="problem-strip" id="problem">
+  <div class="section-label">The Current Situation</div>
+  <div class="section-title">Valuable data. Manual process.<br>Slow decisions.</div>
+  <div class="problem-grid">
+    <div class="problem-card fade-in">
+      <h4>Reports built by hand</h4>
+      <p>Brand performance reports are compiled manually in Excel each month — hours of work that could take seconds.</p>
+    </div>
+    <div class="problem-card fade-in">
+      <h4>Assets go missing silently</h4>
+      <p>Parts sit in "Pending" for months or years with no alert. No one knows until it's too late to recover.</p>
+    </div>
+    <div class="problem-card fade-in">
+      <h4>Clients can't see their own data</h4>
+      <p>Clients wait for a monthly PDF. They can't search, filter, or ask questions about their own fleet in real time.</p>
+    </div>
+    <div class="problem-card fade-in">
+      <h4>Brand decisions made slowly</h4>
+      <p>Procurement teams lack the clear brand-vs-brand comparison needed to switch suppliers or make warranty claims.</p>
+    </div>
+  </div>
+</div>
+
+<!-- MODULES -->
+<section class="modules-section" id="modules">
+  <div class="modules-header">
+    <div>
+      <div class="section-label">The Solution</div>
+      <div class="section-title">Six modules.<br>One intelligent platform.</div>
+    </div>
+    <p class="section-sub" style="max-width:340px; font-size:15px;">Built on the data DATAMARK already captures — no new hardware, no disruption to operations on the ground.</p>
+  </div>
+
+  <div class="modules-grid">
+    <div class="module-card highlight fade-in">
+      <div class="module-num">01</div>
+      <div class="module-icon">📊</div>
+      <div class="module-name">Brand Performance Engine</div>
+      <div class="module-desc">Compare every component brand by scrap rate, average days on unit, and failure pattern. Make supplier decisions with data, not guesswork.</div>
+      <span class="module-tag tag-core">Core Module</span>
+      <ul class="module-bullets">
+        <li>Automatic monthly brand ranking</li>
+        <li>New vs In-Use failure comparison</li>
+        <li>Supplier warranty claim support</li>
+      </ul>
+    </div>
+
+    <div class="module-card highlight fade-in">
+      <div class="module-num">02</div>
+      <div class="module-icon">📍</div>
+      <div class="module-name">Asset Lifecycle Tracker</div>
+      <div class="module-desc">A live, searchable view of every marked component — current location, previous location, days on unit, and status. No more phone calls to find a part.</div>
+      <span class="module-tag tag-core">Core Module</span>
+      <ul class="module-bullets">
+        <li>Search any asset by QR code or ID</li>
+        <li>Full movement history per component</li>
+        <li>Vehicle-level component summary</li>
+      </ul>
+    </div>
+
+    <div class="module-card highlight fade-in">
+      <div class="module-num">03</div>
+      <div class="module-icon">🔔</div>
+      <div class="module-name">Exception & Alert Centre</div>
+      <div class="module-desc">Automatic flags for stuck assets, idle time beyond threshold, excessive replacement, and unauthorised movements — sent to the right manager, immediately.</div>
+      <span class="module-tag tag-core">Core Module</span>
+      <ul class="module-bullets">
+        <li>Configurable alert thresholds per client</li>
+        <li>Weekly exception digest emails</li>
+        <li>Pending & idle asset detection</li>
+      </ul>
+    </div>
+
+    <div class="module-card fade-in">
+      <div class="module-num">04</div>
+      <div class="module-icon">🧠</div>
+      <div class="module-name">Scrap Intelligence</div>
+      <div class="module-desc">Understand why components fail — not just that they failed. Risk-score active assets approaching historical scrap thresholds before they become a problem.</div>
+      <span class="module-tag tag-plus">Premium</span>
+      <ul class="module-bullets">
+        <li>Failure pattern analysis per brand</li>
+        <li>Risk flag on at-risk active assets</li>
+        <li>Procurement recommendation report</li>
+      </ul>
+    </div>
+
+    <div class="module-card fade-in">
+      <div class="module-num">05</div>
+      <div class="module-icon">📄</div>
+      <div class="module-name">Automated Report Generator</div>
+      <div class="module-desc">One click. Branded PDF or Excel report delivered per client, per component type, covering the full reporting period — no manual compilation.</div>
+      <span class="module-tag tag-plus">Premium</span>
+      <ul class="module-bullets">
+        <li>Replaces manual Excel report building</li>
+        <li>Scheduled monthly auto-delivery</li>
+        <li>Customisable DATAMARK branding</li>
+      </ul>
+    </div>
+
+    <div class="module-card fade-in">
+      <div class="module-num">06</div>
+      <div class="module-icon">🚛</div>
+      <div class="module-name">Fleet & Location Overview</div>
+      <div class="module-desc">A visual breakdown of asset distribution across the fleet — which components are on vehicles, in stores, at breakdown, or at scrap — at any given moment.</div>
+      <span class="module-tag tag-plus">Phase 2</span>
+      <ul class="module-bullets">
+        <li>Location distribution chart</li>
+        <li>Per-vehicle component summary</li>
+        <li>Tyre + battery unified view</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- LIVE INSIGHT (simulated data) -->
+<section class="insight-section" id="insight">
+  <div class="section-label">Real Data. Real Findings.</div>
+  <div class="section-title">What the system found<br>in one client's battery data.</div>
+  <p class="section-sub" style="margin-top:12px;">This is a sample of what the Brand Performance Engine surfaces automatically — from the same data currently sitting in a spreadsheet.</p>
+
+  <div class="insight-grid">
+    <div>
+      <div class="stat-block fade-in">
+        <div class="stat-num">3,530</div>
+        <div class="stat-label">Batteries tracked across fleet</div>
+        <div class="stat-note">191 vehicle codes, 35 brands</div>
+      </div>
+      <div class="stat-block fade-in">
+        <div class="stat-num">84%</div>
+        <div class="stat-label">Overall scrap rate — fleet-wide</div>
+        <div class="stat-note">2,968 of 3,530 batteries inactive</div>
+      </div>
+      <div class="stat-block fade-in">
+        <div class="stat-num">2,963</div>
+        <div class="stat-label">Days one battery sat unnoticed in Pending</div>
+        <div class="stat-note">Asset #168942 — flagged instantly by the Alert Centre</div>
+      </div>
+    </div>
+
+    <div class="insight-table fade-in">
+      <div class="insight-table-header">
+        <span>Brand</span>
+        <span>Units Tracked</span>
+        <span>Scrap Rate</span>
+      </div>
+      <div class="insight-row">
+        <span>Tuska Power</span>
+        <span>213</span>
+        <span class="rate-good">2.8%</span>
+      </div>
+      <div class="insight-row">
+        <span>Probe</span>
+        <span>822</span>
+        <span class="rate-bad">87.3%</span>
+      </div>
+      <div class="insight-row">
+        <span>Exide</span>
+        <span>408</span>
+        <span class="rate-bad">94.4%</span>
+      </div>
+      <div class="insight-row">
+        <span>Willard</span>
+        <span>409</span>
+        <span class="rate-bad">96.1%</span>
+      </div>
+      <div class="insight-row">
+        <span>Energizer</span>
+        <span>361</span>
+        <span class="rate-mid">80.9%</span>
+      </div>
+      <div class="insight-row">
+        <span>Deltec</span>
+        <span>164</span>
+        <span class="rate-mid">75.6%</span>
+      </div>
+      <div class="insight-row">
+        <span>Raylite</span>
+        <span>42</span>
+        <span class="rate-good">9.5%</span>
+      </div>
+      <div class="insight-row" style="background:rgba(200,168,75,.06); border-top:1px solid rgba(200,168,75,.2);">
+        <span style="color:var(--gold); font-weight:600">Insight</span>
+        <span style="font-size:12px; color:var(--muted); grid-column: 2/4">Tuska Power lasts significantly longer than industry average. Procurement switch → immediate cost saving potential.</span>
+      </div>
+    </div>
+  </div>
+  <div style="text-align: center; margin-top: 28px;">
+    <div class="data-simulated-note">📊 Data shown is for illustration purposes — represents the type of insight the system delivers.</div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- HOW IT WORKS -->
+<section class="process-section" id="process">
+  <div class="section-label">How It Works</div>
+  <div class="section-title">Nothing changes on the ground.<br>Everything changes in the office.</div>
+  <div class="steps">
+    <div class="step fade-in">
+      <div class="step-n">Step 01</div>
+      <h4>DATAMARK continues as normal</h4>
+      <p>Field teams mark and scan parts daily. The QR-coded inspection data flows into DATATRACK exactly as it does today.</p>
+    </div>
+    <div class="step fade-in">
+      <div class="step-n">Step 02</div>
+      <h4>Data feeds the intelligence layer</h4>
+      <p>The Asset Intelligence System reads DATATRACK data and processes it into live dashboards, alerts, and reports automatically.</p>
+    </div>
+    <div class="step fade-in">
+      <div class="step-n">Step 03</div>
+      <h4>Your team sees everything</h4>
+      <p>Internal dashboards show brand performance, pending assets, scrap trends — updated daily. No more Excel digging.</p>
+    </div>
+    <div class="step fade-in">
+      <div class="step-n">Step 04</div>
+      <h4>You deliver better reports</h4>
+      <p>Monthly client reports are generated automatically. Account managers send them in one click instead of building from scratch.</p>
+    </div>
+  </div>
+</section>
+
+<!-- NEXT STEPS (No pricing, just engagement) -->
+<section class="next-steps-section" id="next">
+  <div class="section-label">Next Steps</div>
+  <div class="section-title">Let's build Module 1.<br>Then we talk numbers.</div>
+  <p class="section-sub" style="margin-top:12px; max-width: 500px; margin-left: auto; margin-right: auto;">
+    I'm not quoting a price yet — because first I want to know if this solves a real problem for you.
+  </p>
+  <div class="next-card">
+    <div style="font-size: 48px; margin-bottom: 16px;">📞</div>
+    <h3 style="font-size: 20px; margin-bottom: 12px;">What happens next?</h3>
+    <ul style="text-align: left; margin: 24px 0; list-style: none; display: inline-block; text-align: left;">
+      <li style="padding: 8px 0;">1️⃣ We schedule a 20-min walkthrough of this proposal</li>
+      <li style="padding: 8px 0;">2️⃣ You confirm this solves a problem worth solving</li>
+      <li style="padding: 8px 0;">3️⃣ I build Module 1 (Brand Performance) in 2 weeks</li>
+      <li style="padding: 8px 0;">4️⃣ You see it working with your real data</li>
+      <li style="padding: 8px 0;">5️⃣ THEN we discuss price — fair for both sides</li>
+    </ul>
+    <div class="contact-buttons">
+      <a href="https://wa.me/263711664295" target="_blank" class="contact-btn whatsapp-btn">📱 WhatsApp +263 71 166 4295</a>
+      <a href="tel:+263711664295" class="contact-btn call-btn">📞 Call +263 71 166 4295</a>
+      <a href="mailto:manjengwap10@gmail.com" class="contact-btn">✉️ manjengwap10@gmail.com</a>
+    </div>
+  </div>
+</section>
+
+<!-- FINAL CTA SECTION -->
+<div class="final-cta" id="contact">
+  <div class="section-label">Ready to start?</div>
+  <h2>See what your data<br><span style="color:var(--gold)">can really do.</span></h2>
+  <p style="font-size: 17px; color: rgba(255,255,255,.6); max-width: 500px; margin: 16px auto 0;">No obligation. No price talk yet. Just a 20-minute walkthrough to see if this makes sense for DATAMARK.</p>
+  <a href="https://wa.me/263711664295" target="_blank" class="btn-primary" style="margin-top: 32px; display: inline-block;">📱 Message me on WhatsApp →</a>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <a href="#" class="logo-text" style="font-size: 18px;">DATAMARK<span style="color:var(--gold)">AI</span></a>
+  <p>© 2026 DATAMARK Africa. Asset Intelligence System — Proposal by Anesu Manjengwa (MA TechHub).</p>
+  <p style="font-size:12px;">📊 All data insights shown are simulated for proposal purposes.</p>
+</footer>
+
+<script>
+  // Intersection Observer for fade-in animations
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry, i) => {
+      if (entry.isIntersecting) {
+        setTimeout(() => {
+          entry.target.classList.add('visible');
+        }, i * 80);
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.1 });
+
+  document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+</script>
+
+</body>
+</html>
